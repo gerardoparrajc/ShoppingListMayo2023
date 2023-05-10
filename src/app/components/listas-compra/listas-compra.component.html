@@ -1,0 +1,8 @@
+<mat-nav-list>
+  <a *ngFor="let lista of listasCompra" mat-list-item href="#">{{ lista.nombre }}</a>
+</mat-nav-list>
+
+<button mat-button color="accent" (click)="showNewListaDialog()">
+  <mat-icon>add_circle_outline</mat-icon>
+  Nueva lista
+</button>
