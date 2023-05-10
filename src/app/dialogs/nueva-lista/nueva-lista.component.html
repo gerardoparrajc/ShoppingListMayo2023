@@ -1,0 +1,15 @@
+<form #formulario="ngForm">
+  <h1 mat-dialog-title>Nueva lista de la compra</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de la lista</mat-label>
+      <input matInput required [(ngModel)]="formulario.value.nombreLista" name="nombreLista">
+      <mat-error *ngIf="formulario.controls['nombreLista'].invalid">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="cancelar()">Cancelar</button>
+    <button mat-raised-button color="primary" (click)="aceptar(formulario)">Añadir</button>
+  </div>
+</form>
+
