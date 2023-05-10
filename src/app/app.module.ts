@@ -14,11 +14,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { ListasCompraComponent } from './components/listas-compra/listas-compra.component';
+import { ProductosComponent } from './components/productos/productos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListasCompraComponent
+    ListasCompraComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
