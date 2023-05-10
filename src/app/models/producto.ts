@@ -1,5 +1,5 @@
 export interface Producto {
-  id?: string,
+  id?: number,
   nombre: string,
   unidades: number,
   marcado: boolean
