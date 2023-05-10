@@ -2,54 +2,50 @@ import { Injectable } from '@angular/core';
 import { ListaCompra } from '../models/lista-compra';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Producto } from '../models/producto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListasCompraService {
 
-  private currentId: number = 0;
-  private listasCompra: ListaCompra[] = [];
+  private urlServer = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient) { }
 
-  createListaCompra(listaCompra: ListaCompra) {
-    listaCompra.id = String(this.currentId++);
-    this.listasCompra.push(listaCompra);
+  getListasCompra() {
+    return this.http.get(`${this.urlServer}/listas-compra`);
   }
 
-  getListasCompra(): Promise<ListaCompra[]> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (Math.round(Math.random())) {
-          // Proceso muy largo
-          console.log(this.listasCompra);
-          resolve(this.listasCompra);
-        } else {
-          // Si hay error
-          reject('Memoria llena');
-        }
-      }, 1500);
-
-    });
+  getListaCompra(id:number) {
+    return this.http.get(`${this.urlServer}/listas-compra/${id}`);
   }
 
-  getDatos(): Observable<number> {
-    const observable = Observable.create((observer: any) => {
-      let contador = 0;
-      setInterval(() => {
-        if (contador === 10) {
-          observer.complete();
-        }
-
-        observer.next(contador++);
-      }, 1000);
-    });
-
-    return observable;
+  createListaCompra(lista: ListaCompra) {
+    return this.http.post(`${this.urlServer}/listas-compra`, lista);
   }
 
-  getListaCompra(idLista: string): ListaCompra | undefined {
-    return this.listasCompra.find(element => element.id === idLista);
+  updateListaCompra(lista: ListaCompra) {
+    return this.http.put(`${this.urlServer}/listas-compra/${lista.id}`, lista);
+  }
+
+  deleteListaCompra(idLista: number) {
+    return this.http.delete(`${this.urlServer}/listas-compra/${idLista}`);
+  }
+
+  getProductosFromLista(idLista: number) {
+    return this.http.get(`${this.urlServer}/listas-compra/${idLista}/productos`);
+  }
+
+  addProductoToLista(idLista: number, producto: Producto) {
+    return this.http.post(`${this.urlServer}/listas-compra/${idLista}/productos`, producto);
+  }
+
+  updateProductoFromLista(producto: Producto) {
+    return this.http.put(`${this.urlServer}/productos/${producto.id}`, producto);
+  }
+
+  deleteProducto(idProducto: number) {
+    return this.http.delete(`${this.urlServer}/productos/${idProducto}`);
   }
 }
