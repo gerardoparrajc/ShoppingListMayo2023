@@ -25,31 +25,19 @@ export class AppComponent implements OnInit {
     private listasCompraService: ListasCompraService
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     const lista: ListaCompra = {
-      nombre: 'Carrefour',
+      nombre: 'Lidl',
       productos: []
     }
 
-    this.listasCompraService.createListaCompra(lista);
+    /* this.listasCompraService.createListaCompra(lista).subscribe({
+      next: (datos) => console.log(datos),
+      error: (error) => console.log(error)
+    }); */
 
-    /* this.listasCompraService.getListasCompra()
-      .then((listas: ListaCompra[]) => {
-        this.listasCompra = listas;
-        console.log(listas);
-      }
-    ).catch((error: string) => console.log(error)); */
-
-    try {
-      this.listasCompra = await this.listasCompraService.getListasCompra();
-    } catch(exception) {
-      console.log(exception);
-    }
-
-    console.log('Después de la petición al servicio');
-
-    this.listasCompraService.getDatos().subscribe({
-      next: (valor: number) => console.log(valor),
+    this.listasCompraService.getListasCompra().subscribe({
+      next: (datos) => console.log(datos),
       error: (error) => console.log(error),
     });
   }
