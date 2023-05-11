@@ -1,6 +1,7 @@
 <mat-list-item [routerLink]="['/listas-compra', lista.id]" routerLinkActive="active">
 
   <span matListItemTitle >{{ lista.nombre }}</span>
+  <span matListItemLine>{{ lista.createdAt | date: 'dd/MMM/yyyy' }}</span>
 
   <button mat-icon-button [matMenuTriggerFor]="menu" (click)="cancelarClick($event)" matListItemMeta>
     <mat-icon>more_vert</mat-icon>
