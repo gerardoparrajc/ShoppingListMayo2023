@@ -4,6 +4,7 @@
       <span class="badge">{{ producto.unidades | number: '3.2-4':'en' }}</span>
       <span class="badge">{{ producto.unidades | currency: 'EUR':'symbol':'1.2-2'  }}</span>
       <span class="badge">{{ producto.unidades | percent: '1.2-2'   }}</span>
+      <span class="badge">{{ producto.unidades | potenciaDos   }}</span>
       {{ producto.nombre | slice: 1:4 }}
   </mat-list-option>
 </mat-selection-list>

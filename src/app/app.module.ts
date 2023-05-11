@@ -27,6 +27,7 @@ import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.compon
 import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.component';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { PotenciaDosPipe } from './pipes/potencia-dos.pipe';
 
 registerLocaleData(localeEs)
 
@@ -39,7 +40,8 @@ registerLocaleData(localeEs)
     NuevoProductoComponent,
     ItemListaCompraComponent,
     EditarListaComponent,
-    EliminarListaComponent
+    EliminarListaComponent,
+    PotenciaDosPipe
   ],
   imports: [
     BrowserModule,
