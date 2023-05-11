@@ -1,6 +1,6 @@
 <mat-nav-list>
   <app-item-lista-compra
-    *ngFor="let listaCompra of listasCompra"
+    *ngFor="let listaCompra of listasCompra$ | async"
     [lista]="listaCompra"
     (listaActualizada)="onListaActualizada($event)"
   ></app-item-lista-compra>

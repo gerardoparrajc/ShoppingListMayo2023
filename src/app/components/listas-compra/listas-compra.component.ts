@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { NuevaListaComponent } from 'src/app/dialogs/nueva-lista/nueva-lista.component';
 import { ListaCompra } from 'src/app/models/lista-compra';
 import { ListasCompraService } from 'src/app/services/listas-compra.service';
@@ -11,6 +12,7 @@ import { ListasCompraService } from 'src/app/services/listas-compra.service';
 })
 export class ListasCompraComponent implements OnInit {
   listasCompra: ListaCompra[] = [];
+  listasCompra$?: any;
 
   constructor(
     private listasCompraService: ListasCompraService,
@@ -18,7 +20,9 @@ export class ListasCompraComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.listasCompraService.getListasCompra().subscribe({
+    this.listasCompra$ = this.listasCompraService.getListasCompra();
+
+    /* this.listasCompraService.getListasCompra().subscribe({
       next: (respuesta: any) => {
         if (respuesta.success) {
           this.listasCompra = respuesta.data;
@@ -31,7 +35,7 @@ export class ListasCompraComponent implements OnInit {
         alert('Se ha producido un error al obtener las listas de la compra');
         console.log(error);
       },
-    });
+    }); */
   }
 
   showNewListaDialog() {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ListaCompra } from '../models/lista-compra';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Producto } from '../models/producto';
 
@@ -14,7 +14,9 @@ export class ListasCompraService {
   constructor(private http: HttpClient) { }
 
   getListasCompra() {
-    return this.http.get(`${this.urlServer}/listas-compra`);
+    return this.http.get(`${this.urlServer}/listas-compra`).pipe(
+      map((datos:any) => datos.data)
+    );
   }
 
   getListaCompra(id:number) {
