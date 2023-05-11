@@ -2,6 +2,7 @@
   <app-item-lista-compra
     *ngFor="let listaCompra of listasCompra"
     [lista]="listaCompra"
+    (listaActualizada)="onListaActualizada($event)"
   ></app-item-lista-compra>
 </mat-nav-list>
 

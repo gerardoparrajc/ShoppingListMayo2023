@@ -63,4 +63,8 @@ export class ListasCompraComponent implements OnInit {
       error: (error) => console.log(error)
     });
   }
+
+  onListaActualizada(listas: ListaCompra[]) {
+    this.listasCompra = listas;
+  }
 }
