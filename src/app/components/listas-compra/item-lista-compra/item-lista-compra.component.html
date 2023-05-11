@@ -1,0 +1,17 @@
+<mat-list-item [routerLink]="['/listas-compra', lista.id]" routerLinkActive="active">
+
+  <span matListItemTitle >{{ lista.nombre }}</span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" (click)="cancelarClick($event)" matListItemMeta>
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="showDialogEditarLista()">
+      <mat-icon>edit</mat-icon> Editar lista
+    </button>
+    <button mat-menu-item (click)="showDialogEliminarLista()">
+      <mat-icon>delete</mat-icon> Eliminar lista
+    </button>
+  </mat-menu>
+</mat-list-item>

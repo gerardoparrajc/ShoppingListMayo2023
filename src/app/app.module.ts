@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ListasCompraComponent } from './components/listas-compra/listas-compra.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { NuevaListaComponent } from './dialogs/nueva-lista/nueva-lista.component';
+import { NuevoProductoComponent } from './dialogs/nuevo-producto/nuevo-producto.component';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -20,7 +21,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { NuevoProductoComponent } from './dialogs/nuevo-producto/nuevo-producto.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { ItemListaCompraComponent } from './components/listas-compra/item-lista-compra/item-lista-compra.component';
+import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { NuevoProductoComponent } from './dialogs/nuevo-producto/nuevo-producto.
     ListasCompraComponent,
     ProductosComponent,
     NuevaListaComponent,
-    NuevoProductoComponent
+    NuevoProductoComponent,
+    ItemListaCompraComponent,
+    EditarListaComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,8 @@ import { NuevoProductoComponent } from './dialogs/nuevo-producto/nuevo-producto.
     MatListModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

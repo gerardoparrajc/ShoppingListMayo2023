@@ -9,8 +9,6 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class NuevaListaComponent {
 
-  // nombreLista: string = '';
-
   constructor(private dialog: MatDialogRef<NuevaListaComponent>) {}
 
   cancelar() {

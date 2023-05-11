@@ -1,12 +1,8 @@
 <mat-nav-list>
-  <a
-    *ngFor="let lista of listasCompra"
-    mat-list-item
-    [routerLink]="['/listas-compra', lista.id]"
-    routerLinkActive="active"
-    >
-      {{ lista.nombre }}
-  </a>
+  <app-item-lista-compra
+    *ngFor="let listaCompra of listasCompra"
+    [lista]="listaCompra"
+  ></app-item-lista-compra>
 </mat-nav-list>
 
 <button mat-button color="accent" (click)="showNewListaDialog()">
