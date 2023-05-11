@@ -3,9 +3,13 @@
     {{ producto.nombre }}
       <span class="badge">{{ producto.unidades | number: '3.2-4':'en' }}</span>
       <span class="badge">{{ producto.unidades | currency: 'EUR':'symbol':'1.2-2'  }}</span>
+      <span class="badge">{{ producto.unidades | percent: '1.2-2'   }}</span>
   </mat-list-option>
 </mat-selection-list>
 
+<pre>
+  {{ productos | json }}
+</pre>
 
 <button class="fake-fab-button" (click)="showAnadirProducto()" mat-raised-button color="accent" aria-label="Añadir producto">
   <mat-icon>inventory_2</mat-icon>
