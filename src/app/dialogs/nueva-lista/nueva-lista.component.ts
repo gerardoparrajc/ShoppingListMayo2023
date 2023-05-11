@@ -17,7 +17,7 @@ export class NuevaListaComponent {
     this.dialog.close();
   }
 
-  aceptar(formulario: NgForm) {
+  doSubmit(formulario: NgForm) {
     this.dialog.close(formulario.value.nombreLista);
   }
 
