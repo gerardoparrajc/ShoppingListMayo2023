@@ -25,6 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ItemListaCompraComponent } from './components/listas-compra/item-lista-compra/item-lista-compra.component';
 import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
 import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.
     NuevoProductoComponent,
     ItemListaCompraComponent,
     EditarListaComponent,
-    EliminarListaComponent
+    EliminarListaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
