@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,7 +25,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ItemListaCompraComponent } from './components/listas-compra/item-lista-compra/item-lista-compra.component';
 import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
 import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.component';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
 
+registerLocaleData(localeEs)
 
 @NgModule({
   declarations: [
@@ -57,7 +60,9 @@ import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.
     MatInputModule,
     MatMenuModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
