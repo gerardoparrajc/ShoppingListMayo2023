@@ -11,10 +11,12 @@ export class AuthService {
   private _isLogged: boolean = false;
 
   public get isLogged(): boolean {
-    return this._isLogged;
+    return sessionStorage.getItem('isLogged') === 'true';
+    // return this._isLogged;
   }
 
   public set isLogged(value: boolean) {
+    sessionStorage.setItem('isLogged', String(value));
     this._isLogged = value;
   }
 
