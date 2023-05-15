@@ -29,6 +29,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ItemProductoComponent } from './components/productos/item-producto/item-producto.component';
+import { EditarProductoComponent } from './dialogs/editar-producto/editar-producto.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     EliminarListaComponent,
     LoginComponent,
     RegistroComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ItemProductoComponent,
+    EditarProductoComponent
   ],
   imports: [
     BrowserModule,
