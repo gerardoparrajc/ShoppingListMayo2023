@@ -33,4 +33,8 @@ export class AuthService {
       password: password
     });
   }
+
+  logout() {
+    this.isLogged = false;
+  }
 }

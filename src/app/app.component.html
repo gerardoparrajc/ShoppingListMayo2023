@@ -19,6 +19,10 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>ShoppingList</span>
+      <div class="spacer"></div>
+      <button mat-icon-button (click)="doLogout()">
+        <mat-icon>logout</mat-icon>
+      </button>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

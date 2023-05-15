@@ -4,6 +4,9 @@ import { Observable, map, shareReplay } from 'rxjs';
 import { ListasCompraService } from './services/listas-compra.service';
 import { ListaCompra } from './models/lista-compra';
 import { Producto } from './models/producto';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +14,6 @@ import { Producto } from './models/producto';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
   listasCompra: ListaCompra[] = [];
 
   isHandset$: Observable<boolean> = this.breakpointObserver
@@ -23,7 +25,10 @@ export class AppComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private listasCompraService: ListasCompraService
+    private listasCompraService: ListasCompraService,
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +36,6 @@ export class AppComponent implements OnInit {
       next: (datos) => console.log(datos),
       error: (error) => console.log(error),
     });
-
 
     /* const producto1: Producto = {
       nombre: 'Leche',
@@ -65,8 +69,19 @@ export class AppComponent implements OnInit {
       next: (respuesta) => console.log(respuesta),
       error: (error) => console.log(error)
     }); */
+  }
 
-
-
+  doLogout() {
+    this.authService.logout();
+    this.snackBar.open(
+      'Se ha cerrado la sesión correctamente. Vuelve pronto',
+      'Ok',
+      {
+        horizontalPosition: 'center',
+        verticalPosition: 'top',
+        duration: 5000,
+      }
+    );
+    this.router.navigate(['/login']);
   }
 }
