@@ -1,5 +1,16 @@
+:host {
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
+
 .sidenav-container {
   height: 100%;
+  width: 100%;
 }
 
 .sidenav {
@@ -16,6 +27,6 @@
   z-index: 1;
 }
 
-.spacer {
-  flex: 1 1 auto;
+.mat-sidenav-content {
+  padding: 1rem;
 }

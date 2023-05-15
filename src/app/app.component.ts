@@ -5,7 +5,7 @@ import { ListasCompraService } from './services/listas-compra.service';
 import { ListaCompra } from './models/lista-compra';
 import { Producto } from './models/producto';
 import { AuthService } from './services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -15,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AppComponent implements OnInit {
   listasCompra: ListaCompra[] = [];
+  mostrarFormularios: boolean = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
@@ -28,47 +29,23 @@ export class AppComponent implements OnInit {
     private listasCompraService: ListasCompraService,
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
-    this.listasCompraService.getListasCompra().subscribe({
-      next: (datos) => console.log(datos),
-      error: (error) => console.log(error),
+    this.router.events.forEach((e: any) => {
+      if (e instanceof NavigationEnd) {
+        if (
+          this.route.root.firstChild?.snapshot.routeConfig?.path === 'login' ||
+          this.route.root.firstChild?.snapshot.routeConfig?.path === 'registro'
+        ) {
+          this.mostrarFormularios = true;
+        } else {
+          this.mostrarFormularios = false;
+        }
+      }
     });
-
-    /* const producto1: Producto = {
-      nombre: 'Leche',
-      unidades: 2,
-      marcado: false
-    }
-
-    const producto2: Producto = {
-      nombre: 'Yogurt',
-      unidades: 8,
-      marcado: false
-    }
-
-    const producto3: Producto = {
-      nombre: 'Pan',
-      unidades: 3,
-      marcado: false
-    }
-
-    this.listasCompraService.addProductoToLista(1, producto1).subscribe({
-      next: (respuesta) => console.log(respuesta),
-      error: (error) => console.log(error)
-    });
-
-    this.listasCompraService.addProductoToLista(1, producto2).subscribe({
-      next: (respuesta) => console.log(respuesta),
-      error: (error) => console.log(error)
-    });
-
-    this.listasCompraService.addProductoToLista(2, producto3).subscribe({
-      next: (respuesta) => console.log(respuesta),
-      error: (error) => console.log(error)
-    }); */
   }
 
   doLogout() {
@@ -82,6 +59,8 @@ export class AppComponent implements OnInit {
         duration: 5000,
       }
     );
+    this.mostrarFormularios = true;
     this.router.navigate(['/login']);
+
   }
 }
