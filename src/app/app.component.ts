@@ -38,7 +38,8 @@ export class AppComponent implements OnInit {
       if (e instanceof NavigationEnd) {
         if (
           this.route.root.firstChild?.snapshot.routeConfig?.path === 'login' ||
-          this.route.root.firstChild?.snapshot.routeConfig?.path === 'registro'
+          this.route.root.firstChild?.snapshot.routeConfig?.path === 'registro' ||
+          this.route.root.firstChild?.snapshot.routeConfig?.path === '**'
         ) {
           this.mostrarFormularios = true;
         } else {
