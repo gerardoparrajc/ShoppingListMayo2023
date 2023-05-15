@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarProductoComponent } from 'src/app/dialogs/editar-producto/editar-producto.component';
+import { EliminarProductoComponent } from 'src/app/dialogs/eliminar-producto/eliminar-producto.component';
 import { Producto } from 'src/app/models/producto';
 import { ListasCompraService } from 'src/app/services/listas-compra.service';
 
@@ -11,6 +12,7 @@ import { ListasCompraService } from 'src/app/services/listas-compra.service';
 })
 export class ItemProductoComponent {
   @Input() producto!: Producto;
+  @Output() actualizarLista: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -40,6 +42,21 @@ export class ItemProductoComponent {
   }
 
   showDialogEliminarProducto() {
+    const dialog = this.dialog.open(EliminarProductoComponent);
 
+    dialog.afterClosed().subscribe({
+      next: (result: boolean) => {
+        if (result) {
+          this.listasCompraService.deleteProducto(this.producto.id as number).subscribe({
+            next: (respuesta) => {
+              this.actualizarLista.emit();
+              console.log(respuesta)
+            },
+            error: (error) => console.log(error)
+          });
+        }
+      },
+      error: (error) => console.log(error)
+    })
   }
 }

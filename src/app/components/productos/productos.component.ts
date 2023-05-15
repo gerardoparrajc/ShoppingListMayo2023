@@ -76,4 +76,8 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+  doActualizarLista() {
+    this.actualizarListaCompra();
+  }
+
 }

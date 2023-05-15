@@ -31,6 +31,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ItemProductoComponent } from './components/productos/item-producto/item-producto.component';
 import { EditarProductoComponent } from './dialogs/editar-producto/editar-producto.component';
+import { EliminarProductoComponent } from './dialogs/eliminar-producto/eliminar-producto.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { EditarProductoComponent } from './dialogs/editar-producto/editar-produc
     RegistroComponent,
     PageNotFoundComponent,
     ItemProductoComponent,
-    EditarProductoComponent
+    EditarProductoComponent,
+    EliminarProductoComponent
   ],
   imports: [
     BrowserModule,
