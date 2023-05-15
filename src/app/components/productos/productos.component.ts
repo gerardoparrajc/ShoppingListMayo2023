@@ -14,6 +14,7 @@ export class ProductosComponent implements OnInit {
 
   productos: Producto[] = [];
   idLista: number = -1;
+  sinListaSeleccionada: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,10 +26,14 @@ export class ProductosComponent implements OnInit {
     this.route.params.subscribe({
       next: (params: Params) => {
         this.idLista = params['id'];
-        this.actualizarListaCompra();
+        if (this.idLista && this.idLista !== -1) {
+          this.sinListaSeleccionada = false;
+          this.actualizarListaCompra();
+        }
       },
       error: (error) => {
-        alert('Se ha producido un error al obtener los productos de la lista de la compra.')
+        alert('Se ha producido un error al obtener los productos de la lista de la compra.');
+        this.sinListaSeleccionada = true;
         console.log(error);
       }
     });
@@ -38,14 +43,17 @@ export class ProductosComponent implements OnInit {
     this.listasCompraService.getProductosFromLista(this.idLista).subscribe({
       next: (respuesta: any) => {
         if (respuesta.success) {
+          this.sinListaSeleccionada = false;
           this.productos = respuesta.data;
         } else {
           alert('Se ha producido un error al obtener los productos de la lista de la compra.');
+          this.sinListaSeleccionada = true;
           console.log(respuesta);
         }
       },
       error: (error) => {
         alert('Se ha producido un error al obtener los productos de la lista de la compra.');
+        this.sinListaSeleccionada = true;
         console.log(error);
       }
     });
