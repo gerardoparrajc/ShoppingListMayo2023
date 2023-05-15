@@ -1,10 +1,17 @@
-<div *ngIf="!sinListaSeleccionada">
+<div *ngIf="!sinListaSeleccionada && productos.length > 0">
   <mat-selection-list>
     <mat-list-option *ngFor="let producto of productos">
       {{ producto.nombre }} <span class="badge">{{ producto.unidades }}</span>
     </mat-list-option>
   </mat-selection-list>
+</div>
 
+<div *ngIf="!sinListaSeleccionada">
+
+  <div *ngIf="productos.length === 0">
+    <h1>No hay productos en la lista</h1>
+    <h2>Haz click en el botón <strong>Añadir producto</strong>.</h2>
+  </div>
 
   <button class="fake-fab-button" (click)="showAnadirProducto()" mat-raised-button color="accent" aria-label="Añadir producto">
     <mat-icon>inventory_2</mat-icon>
