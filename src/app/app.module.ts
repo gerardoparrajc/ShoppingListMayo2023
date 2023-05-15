@@ -26,6 +26,7 @@ import { ItemListaCompraComponent } from './components/listas-compra/item-lista-
 import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
 import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { LoginComponent } from './components/login/login.component';
     ItemListaCompraComponent,
     EditarListaComponent,
     EliminarListaComponent,
-    LoginComponent
+    LoginComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
