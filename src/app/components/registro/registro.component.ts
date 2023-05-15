@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,7 +14,9 @@ export class RegistroComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -43,7 +47,15 @@ export class RegistroComponent implements OnInit {
     const password = this.formulario.get('password')?.value;
 
     this.authService.registro(username, password).subscribe({
-      next: (respuesta) => console.log(respuesta),
+      next: (respuesta) => {
+        this.snackBar.open('El registro se ha realizado correctamente. Por favor, identifícate','Vamos', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 5000
+        });
+
+        this.router.navigate(['/login']);
+      },
       error: (error) => console.log(error)
     });
   }

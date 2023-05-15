@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -13,7 +15,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,8 +36,32 @@ export class LoginComponent implements OnInit {
     const username = this.formulario.get('username')?.value;
     const password = this.formulario.get('password')?.value;
     this.authService.login(username, password).subscribe({
-      next: (respuesta: any) => console.log(respuesta),
-      error: (error) => console.log(error)
+      next: (respuesta: any) => {
+        this.snackBar.open('Se ha identificado correctamente. Bienvenido', 'Gracias', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          duration: 5000
+        });
+        this.authService.isLogged = true;
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        let mensaje = '';
+        switch (error.status) {
+          case 400:
+            mensaje = 'Nombre de usuario o contraseña inválidos';
+            break;
+
+          default:
+            mensaje = 'Se ha producido un error';
+            break;
+        }
+
+        this.snackBar.open(mensaje, 'Ok', {
+          horizontalPosition: 'center',
+          verticalPosition: 'top'
+        });
+      }
     });
   }
 

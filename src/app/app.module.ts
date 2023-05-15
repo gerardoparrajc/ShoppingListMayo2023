@@ -11,6 +11,11 @@ import { ListasCompraComponent } from './components/listas-compra/listas-compra.
 import { ProductosComponent } from './components/productos/productos.component';
 import { NuevaListaComponent } from './dialogs/nueva-lista/nueva-lista.component';
 import { NuevoProductoComponent } from './dialogs/nuevo-producto/nuevo-producto.component';
+import { ItemListaCompraComponent } from './components/listas-compra/item-lista-compra/item-lista-compra.component';
+import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
+import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -22,11 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { ItemListaCompraComponent } from './components/listas-compra/item-lista-compra/item-lista-compra.component';
-import { EditarListaComponent } from './dialogs/editar-lista/editar-lista.component';
-import { EliminarListaComponent } from './dialogs/eliminar-lista/eliminar-lista.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegistroComponent } from './components/registro/registro.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { RegistroComponent } from './components/registro/registro.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
