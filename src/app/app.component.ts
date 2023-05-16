@@ -7,6 +7,7 @@ import { Producto } from './models/producto';
 import { AuthService } from './services/auth.service';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    console.log(environment);
+
     this.router.events.forEach((e: any) => {
       if (e instanceof NavigationEnd) {
         if (
