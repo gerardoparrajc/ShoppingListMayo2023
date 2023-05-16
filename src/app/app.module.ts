@@ -36,6 +36,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { listasCompraReducer } from './states/reducers/listas-compra.reducers';
 import { ROOT_REDUCERS } from './states/app.state';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { ROOT_REDUCERS } from './states/app.state';
     MatMenuModule,
     MatSnackBarModule,
     StoreModule.forRoot(ROOT_REDUCERS),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
