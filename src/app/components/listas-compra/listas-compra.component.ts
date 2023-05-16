@@ -29,30 +29,6 @@ export class ListasCompraComponent implements OnInit {
     this.listasCompra$ = this.store.select(listasCompraSelector);
 
     this.store.dispatch(cargarListas());
-
-    this.listasCompraService.getListasCompra().subscribe({
-      next: (respuesta: any) => {
-        if (respuesta.success) {
-          this.store.dispatch(listasCargadas({ items: respuesta.data }));
-        }
-      },
-      error: (error) => console.log(error)
-    });
-
-    /* this.listasCompraService.getListasCompra().subscribe({
-      next: (respuesta: any) => {
-        if (respuesta.success) {
-          this.listasCompra = respuesta.data;
-        } else {
-          alert('Se ha producido un error al obtener las listas de la compra');
-          console.log(respuesta);
-        }
-      },
-      error: (error) => {
-        alert('Se ha producido un error al obtener las listas de la compra');
-        console.log(error);
-      },
-    }); */
   }
 
   showNewListaDialog() {
