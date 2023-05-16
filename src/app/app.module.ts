@@ -34,6 +34,7 @@ import { EditarProductoComponent } from './dialogs/editar-producto/editar-produc
 import { EliminarProductoComponent } from './dialogs/eliminar-producto/eliminar-producto.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { listasCompraReducer } from './states/reducers/listas-compra.reducers';
 
 
 @NgModule({
@@ -72,7 +73,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatInputModule,
     MatMenuModule,
     MatSnackBarModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({
+      listasStatus: listasCompraReducer
+    }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
