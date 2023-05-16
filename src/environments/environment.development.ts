@@ -1,3 +1,4 @@
 export const environment = {
-  entorno: 'Desarrollo'
+  entorno: 'Desarrollo',
+  otraVariable: ''
 };
