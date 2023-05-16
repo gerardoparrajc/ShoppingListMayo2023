@@ -1,11 +1,8 @@
 import { createReducer, on } from "@ngrx/store"
-import { ListaCompra } from "src/app/models/lista-compra"
 import { cargarListas } from "../actions/listas-compra.actions"
+import { ListasCompraState } from "../models/listas-compra.state";
 
-export const initialState: {
-  loading: boolean,
-  items: ReadonlyArray<ListaCompra>
-} = {
+export const initialState: ListasCompraState = {
   loading: false,
   items: []
 }

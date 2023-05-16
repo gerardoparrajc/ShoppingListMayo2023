@@ -35,6 +35,7 @@ import { EliminarProductoComponent } from './dialogs/eliminar-producto/eliminar-
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { listasCompraReducer } from './states/reducers/listas-compra.reducers';
+import { ROOT_REDUCERS } from './states/app.state';
 
 
 @NgModule({
@@ -73,9 +74,7 @@ import { listasCompraReducer } from './states/reducers/listas-compra.reducers';
     MatInputModule,
     MatMenuModule,
     MatSnackBarModule,
-    StoreModule.forRoot({
-      listasStatus: listasCompraReducer
-    }),
+    StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
