@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -32,6 +32,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ItemProductoComponent } from './components/productos/item-producto/item-producto.component';
 import { EditarProductoComponent } from './dialogs/editar-producto/editar-producto.component';
 import { EliminarProductoComponent } from './dialogs/eliminar-producto/eliminar-producto.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -69,7 +71,9 @@ import { EliminarProductoComponent } from './dialogs/eliminar-producto/eliminar-
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [],
   bootstrap: [AppComponent]
