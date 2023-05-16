@@ -6,7 +6,7 @@ import { NuevaListaComponent } from 'src/app/dialogs/nueva-lista/nueva-lista.com
 import { ListaCompra } from 'src/app/models/lista-compra';
 import { ListasCompraService } from 'src/app/services/listas-compra.service';
 import { cargarListas, listasCargadas } from 'src/app/states/actions/listas-compra.actions';
-import { loadingListasCompraSelector } from 'src/app/states/selectors/listas-compra.selectors';
+import { listasCompraSelector, loadingListasCompraSelector } from 'src/app/states/selectors/listas-compra.selectors';
 
 @Component({
   selector: 'app-listas-compra',
@@ -16,6 +16,7 @@ import { loadingListasCompraSelector } from 'src/app/states/selectors/listas-com
 export class ListasCompraComponent implements OnInit {
   listasCompra: ListaCompra[] = [];
   loading$: Observable<boolean> = new Observable();
+  listasCompra$: Observable<ReadonlyArray<ListaCompra>> = new Observable();
 
   constructor(
     private listasCompraService: ListasCompraService,
@@ -25,6 +26,7 @@ export class ListasCompraComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading$ = this.store.select(loadingListasCompraSelector);
+    this.listasCompra$ = this.store.select(listasCompraSelector);
 
     this.store.dispatch(cargarListas());
 
